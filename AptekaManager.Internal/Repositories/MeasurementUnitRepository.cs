@@ -3,50 +3,47 @@ using System.Linq;
 using AptekaManager.Internal.Dto;
 using AptekaManager.Internal.Interfaces;
 using AptekaManager.Internal.Models;
-using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 
 namespace AptekaManager.Internal.Repositories
 {
     public class MeasurementUnitRepository : IMeasurementUnitRepository
     {
-        private readonly IMapper _mapper;
         private readonly AptekaManagerContext _context;
 
-        public MeasurementUnitRepository(IMapper mapper, AptekaManagerContext context)
+        public MeasurementUnitRepository(AptekaManagerContext context)
         {
-            _mapper = mapper;
             _context = context;
         }
 
         public IEnumerable<MeasurementUnitDto> GetMeasurementUnits()
         {
-            return _context.MeasurementUnits.Select(x => _mapper.Map<MeasurementUnitDto>(x));
+            return _context.MeasurementUnits.Select(x => MapToDto(x));
         }
 
         public MeasurementUnitDto GetMeasurementUnitById(int measurementUnitId)
         {
             var measurementUnit = _context.MeasurementUnits.FirstOrDefault(x => x.Id == measurementUnitId);
-            return _mapper.Map<MeasurementUnitDto>(measurementUnit);
+            return MapToDto(measurementUnit);
         }
 
         public MeasurementUnitDto InsertMeasurementUnit(MeasurementUnitDto measurementUnit)
         {
-            var newMeasurementUnit = _mapper.Map<MeasurementUnit>(measurementUnit);
+            var newMeasurementUnit = MapToDomain(measurementUnit);
             _context.MeasurementUnits.Add(newMeasurementUnit);
             return measurementUnit;
         }
 
         public MeasurementUnitDto DeleteMeasurementUnit(MeasurementUnitDto measurementUnit)
         {
-            var measurementUnitToDelete = _mapper.Map<MeasurementUnit>(measurementUnit);
+            var measurementUnitToDelete = MapToDomain(measurementUnit);
             _context.MeasurementUnits.Remove(measurementUnitToDelete);
             return measurementUnit;
         }
 
         public MeasurementUnitDto UpdateMeasurementUnit(MeasurementUnitDto measurementUnit)
         {
-            var measurementUnitToUpdate = _mapper.Map<MeasurementUnit>(measurementUnit);
+            var measurementUnitToUpdate = MapToDomain(measurementUnit);
             _context.Entry(measurementUnitToUpdate).State = EntityState.Modified;
             return measurementUnit;
         }
@@ -54,6 +51,24 @@ namespace AptekaManager.Internal.Repositories
         public void Save()
         {
             _context.SaveChanges();
+        }
+
+        private static MeasurementUnitDto MapToDto(MeasurementUnit measurementUnit)
+        {
+            return new()
+            {
+                Id = measurementUnit.Id,
+                Name = measurementUnit.Name
+            };
+        }
+
+        private static MeasurementUnit MapToDomain(MeasurementUnitDto measurementUnitDto)
+        {
+            return new MeasurementUnit()
+            {
+                Id = measurementUnitDto.Id,
+                Name = measurementUnitDto.Name
+            };
         }
     }
 }

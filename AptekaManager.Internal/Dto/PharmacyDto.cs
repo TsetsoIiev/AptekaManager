@@ -18,6 +18,6 @@ namespace AptekaManager.Internal.Dto
 
         public string AddressStreetNumber { get; set; }
 
-        public IEnumerable<Product> Products { get; }
+        public IEnumerable<Product> Products { get; set; }
     }
 }

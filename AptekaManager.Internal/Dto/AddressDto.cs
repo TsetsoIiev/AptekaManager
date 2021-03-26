@@ -8,6 +8,6 @@
         
         public string StreetName { get; set; }
         
-        public int DoorNumber { get; set; }
+        public string StreetNumber { get; set; }
     }
 }
