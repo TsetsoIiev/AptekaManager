@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31112.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AptekaManager.API", "AptekaManager.API\AptekaManager.API.csproj", "{95EA553A-F759-49E7-8B71-6E8BFEE5D0AD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AptekaManager.Web", "AptekaManager.Web\AptekaManager.Web.csproj", "{C7CD2A7A-8E06-4837-9106-5B529ED9D1B3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AptekaManager.Inventory", "AptekaManager.Inventory\AptekaManager.Inventory.csproj", "{1953555E-52F1-478D-B2DB-4B4A82FB11B2}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "AptekaManager.Database", "AptekaManager.Database\AptekaManager.Database.sqlproj", "{52F7D129-18B3-43E3-92DB-037E7EBCB60A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AptekaManager.Internal", "AptekaManager.Internal\AptekaManager.Internal.csproj", "{9B3540D3-C90B-4742-B2AB-86574C5AEFFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AptekaManager.ExternalModule", "AptekaManager.ExternalModule\AptekaManager.ExternalModule.csproj", "{CE9D92EF-4184-40D1-8270-0B6D29BE83FE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{95EA553A-F759-49E7-8B71-6E8BFEE5D0AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95EA553A-F759-49E7-8B71-6E8BFEE5D0AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95EA553A-F759-49E7-8B71-6E8BFEE5D0AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95EA553A-F759-49E7-8B71-6E8BFEE5D0AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7CD2A7A-8E06-4837-9106-5B529ED9D1B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7CD2A7A-8E06-4837-9106-5B529ED9D1B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7CD2A7A-8E06-4837-9106-5B529ED9D1B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7CD2A7A-8E06-4837-9106-5B529ED9D1B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1953555E-52F1-478D-B2DB-4B4A82FB11B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1953555E-52F1-478D-B2DB-4B4A82FB11B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1953555E-52F1-478D-B2DB-4B4A82FB11B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1953555E-52F1-478D-B2DB-4B4A82FB11B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52F7D129-18B3-43E3-92DB-037E7EBCB60A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52F7D129-18B3-43E3-92DB-037E7EBCB60A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52F7D129-18B3-43E3-92DB-037E7EBCB60A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{52F7D129-18B3-43E3-92DB-037E7EBCB60A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52F7D129-18B3-43E3-92DB-037E7EBCB60A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52F7D129-18B3-43E3-92DB-037E7EBCB60A}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{9B3540D3-C90B-4742-B2AB-86574C5AEFFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B3540D3-C90B-4742-B2AB-86574C5AEFFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B3540D3-C90B-4742-B2AB-86574C5AEFFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B3540D3-C90B-4742-B2AB-86574C5AEFFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE9D92EF-4184-40D1-8270-0B6D29BE83FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE9D92EF-4184-40D1-8270-0B6D29BE83FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE9D92EF-4184-40D1-8270-0B6D29BE83FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE9D92EF-4184-40D1-8270-0B6D29BE83FE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6B117031-9C5E-4452-BF26-6CF2F688E3B4}
+	EndGlobalSection
+EndGlobal
