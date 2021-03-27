@@ -1,23 +1,25 @@
 import React from 'react';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import Pharmacy from './Pharmacy'
 
-export default function PharmacyGrid(props) {
-    const [pharmacies, setPharmacies] = useState(props.pharmacies);
+export default function PharmacyGrid({ data }) {
 
     return (
-        pharmacies == [] 
+        data == [] 
         ? (<div>
             
         </div>
         ) : (
             <div>
                 <Grid container spacing={3}>
-                    pharmacies.map((el) => {
+                    data.map((el) => 
                         <Grid item xs={12}>
-                            <Paper className={classes.paper}>
-                                <Pharmacy data={el} />
+                            <Paper>
+                                <Pharmacy />
                             </Paper>
                         </Grid>
-                        }));
+                    );
                 </Grid>
             </div>
         )

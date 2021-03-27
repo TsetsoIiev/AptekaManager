@@ -89,13 +89,11 @@ const theme = createMuiTheme({
     },
 });
 
-export default function SearchBox() {
+export default function SearchBox({ searchData, setSearchData, handleSearchClick }) {
     const classes = useStyles();
 
-    const [search, setSearch] = useState('');
-
     const handleSearchChange = (e) => {
-        setSearch(e.target.value);
+        setSearchData(e.target.value);
     }
 
     return (
@@ -103,8 +101,8 @@ export default function SearchBox() {
             <Grid container>
                 <img src={require('./pharmacy-1.jpg')} className={classes.image} />
                 <Paper className={classes.searchBox} >
-                    <BootstrapInput defaultValue={search} id="searchBoxId" onChange={handleSearchChange} />
-                    <IconButton type="submit" className={classes.iconButton} aria-label="search">
+                    <BootstrapInput defaultValue={searchData} id="searchBoxId" onChange={handleSearchChange} />
+                    <IconButton type="submit" className={classes.iconButton} aria-label="search" onClick={handleSearchClick}>
                         <SearchIcon />
                     </IconButton>
                 </Paper>
