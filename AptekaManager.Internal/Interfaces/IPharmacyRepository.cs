@@ -9,6 +9,8 @@ namespace AptekaManager.Internal.Interfaces
         
         PharmacyDto GetPharmaciesById(int pharmacyId);
 
+        IEnumerable<PharmacyResult> GetPharmaciesForMedicine(string name);
+
         PharmacyDto InsertPharmacy(PharmacyDto pharmacy);
 
         PharmacyDto DeletePharmacy(PharmacyDto pharmacy);

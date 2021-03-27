@@ -10,13 +10,13 @@ namespace AptekaManager.Internal.Dto
             Products = new List<Product>();
         }
 
-        public int Id { get; set; }
-
         public string Name { get; set; }
+
+        public string AddressCity { get; set; }
 
         public string AddressStreetName { get; set; }
 
-        public string AddressStreetNumber { get; set; }
+        public int AddressStreetNumber { get; set; }
 
         public IEnumerable<Product> Products { get; set; }
     }

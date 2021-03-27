@@ -31,6 +31,7 @@ namespace AptekaManager.Internal.Repositories
         {
             var newProduct = MapToDomain(product);
             _context.Products.Add(newProduct);
+            _context.SaveChanges();
             return product;
         }
 
@@ -38,6 +39,7 @@ namespace AptekaManager.Internal.Repositories
         {
             var productToDelete = MapToDomain(product);
             _context.Products.Remove(productToDelete);
+            _context.SaveChanges();
             return product;
         }
 
@@ -45,6 +47,7 @@ namespace AptekaManager.Internal.Repositories
         {
             var productToUpdate = MapToDomain(product);
             _context.Entry(productToUpdate).State = EntityState.Modified;
+            _context.SaveChanges();
             return product;
         }
 
@@ -57,7 +60,6 @@ namespace AptekaManager.Internal.Repositories
         {
             return new()
             {
-                Id = product.Id,
                 Name = product.Name,
                 Price = product.Price,
                 Quantity = product.Quantity,
@@ -72,7 +74,6 @@ namespace AptekaManager.Internal.Repositories
         {
             return new()
             {
-                Id = productDto.Id,
                 Name = productDto.Name,
                 Price = productDto.Price,
                 Quantity = productDto.Quantity,

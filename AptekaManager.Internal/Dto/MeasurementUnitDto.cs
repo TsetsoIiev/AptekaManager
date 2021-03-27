@@ -1,9 +1,10 @@
-﻿namespace AptekaManager.Internal.Dto
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace AptekaManager.Internal.Dto
 {
     public class MeasurementUnitDto
-    {
-        public int Id { get; set; }
-        
+    {   
         public string Name { get; set; }
     }
 }

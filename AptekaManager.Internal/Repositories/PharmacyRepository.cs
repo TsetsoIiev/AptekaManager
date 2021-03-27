@@ -3,7 +3,6 @@ using System.Linq;
 using AptekaManager.Internal.Dto;
 using AptekaManager.Internal.Interfaces;
 using AptekaManager.Internal.Models;
-using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 
 namespace AptekaManager.Internal.Repositories
@@ -28,10 +27,29 @@ namespace AptekaManager.Internal.Repositories
             return MapToDto(pharmacy);
         }
 
+        public IEnumerable<PharmacyResult> GetPharmaciesForMedicine(string name)
+        {
+            var advancedContext = _context.PharmacyProducts
+                .Include(p => p.Product)
+                .Include(p => p.Pharmacy)
+                .ThenInclude(p => p.Address);
+
+            return advancedContext
+                .Where(x => x.Product.Name.ToLower().Contains(name))
+                .Select(x => new PharmacyResult(
+                    MapToDto(_context.Pharmacies
+                    .Where(y => y.Id == x.PharmacyId)
+                    .Include(p => p.Address)
+                    .FirstOrDefault())
+                    , x.Product))
+                .ToList();
+        }
+
         public PharmacyDto InsertPharmacy(PharmacyDto pharmacy)
         {
             var newPharmacy = MapToDomain(pharmacy);
             _context.Pharmacies.Add(newPharmacy);
+            _context.SaveChanges();
             return pharmacy;
         }
 
@@ -39,6 +57,7 @@ namespace AptekaManager.Internal.Repositories
         {
             var pharmacyToDelete = MapToDomain(pharmacy);
             _context.Pharmacies.Remove(pharmacyToDelete);
+            _context.SaveChanges();
             return pharmacy;
         }
 
@@ -46,6 +65,7 @@ namespace AptekaManager.Internal.Repositories
         {
             var pharmacyToUpdate = MapToDomain(pharmacy);
             _context.Entry(pharmacyToUpdate).State = EntityState.Modified;
+            _context.SaveChanges();
             return pharmacy;
         }
 
@@ -58,22 +78,22 @@ namespace AptekaManager.Internal.Repositories
         {
             return new()
             {
-                Id = pharmacy.Id,
                 Name = pharmacy.Name,
+                AddressCity = pharmacy.Address.City,
                 AddressStreetName = pharmacy.Address.StreetName,
                 AddressStreetNumber = pharmacy.Address.DoorNumber,
                 Products = pharmacy.PharmacyProducts.Select(x => x.Product).ToList()
             };
         }
 
-        private Pharmacy MapToDomain(PharmacyDto pharmacyDto)
+        private static Pharmacy MapToDomain(PharmacyDto pharmacyDto)
         {
             return new()
             {
-                Id = pharmacyDto.Id,
                 Name = pharmacyDto.Name,
                 Address = new Address()
                 {
+                    City = pharmacyDto.AddressCity,
                     StreetName = pharmacyDto.AddressStreetName,
                     DoorNumber = pharmacyDto.AddressStreetNumber
                 }

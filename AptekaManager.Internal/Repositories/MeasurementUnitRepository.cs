@@ -31,6 +31,7 @@ namespace AptekaManager.Internal.Repositories
         {
             var newMeasurementUnit = MapToDomain(measurementUnit);
             _context.MeasurementUnits.Add(newMeasurementUnit);
+            _context.SaveChanges();
             return measurementUnit;
         }
 
@@ -38,6 +39,7 @@ namespace AptekaManager.Internal.Repositories
         {
             var measurementUnitToDelete = MapToDomain(measurementUnit);
             _context.MeasurementUnits.Remove(measurementUnitToDelete);
+            _context.SaveChanges();
             return measurementUnit;
         }
 
@@ -45,6 +47,7 @@ namespace AptekaManager.Internal.Repositories
         {
             var measurementUnitToUpdate = MapToDomain(measurementUnit);
             _context.Entry(measurementUnitToUpdate).State = EntityState.Modified;
+            _context.SaveChanges();
             return measurementUnit;
         }
 
@@ -57,7 +60,6 @@ namespace AptekaManager.Internal.Repositories
         {
             return new()
             {
-                Id = measurementUnit.Id,
                 Name = measurementUnit.Name
             };
         }
@@ -66,7 +68,6 @@ namespace AptekaManager.Internal.Repositories
         {
             return new MeasurementUnit()
             {
-                Id = measurementUnitDto.Id,
                 Name = measurementUnitDto.Name
             };
         }

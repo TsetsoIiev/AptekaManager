@@ -58,6 +58,7 @@ namespace AptekaManager.API
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapControllerRoute(name: "default", "{controller}/{action}/{id?}");
             });
         }
     }

@@ -31,6 +31,7 @@ namespace AptekaManager.Internal.Repositories
         {
             var newAddress = MapToDomain(address);
             _context.Addresses.Add(newAddress);
+            _context.SaveChanges();
             return address;
         }
 
@@ -38,6 +39,7 @@ namespace AptekaManager.Internal.Repositories
         {
             var addressToDelete = MapToDomain(address);
             _context.Addresses.Remove(addressToDelete);
+            _context.SaveChanges();
             return address;
         }
 
@@ -45,6 +47,7 @@ namespace AptekaManager.Internal.Repositories
         {
             var addressToUpdate = MapToDomain(address);
             _context.Entry(addressToUpdate).State = EntityState.Modified;
+            _context.SaveChanges();
             return address;
         }
 
@@ -57,7 +60,6 @@ namespace AptekaManager.Internal.Repositories
         {
             return new()
             {
-                Id = address.Id,
                 City = address.City,
                 StreetName = address.StreetName,
                 StreetNumber = address.DoorNumber
@@ -68,7 +70,6 @@ namespace AptekaManager.Internal.Repositories
         {
             return new()
             {
-                Id = addressDto.Id,
                 City = addressDto.City,
                 StreetName = addressDto.StreetName,
                 DoorNumber = addressDto.StreetNumber
