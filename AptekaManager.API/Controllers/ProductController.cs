@@ -31,19 +31,23 @@ namespace AptekaManager.API.Controllers
         }
 
         [HttpPost("[action]")]
-        public IActionResult CreateProduct([FromBody]ProductDto product)
+        public IActionResult CreateProduct([FromBody] ProductDto product)
         {
+            product.MeasurementUnit = new Internal.Models.MeasurementUnit()
+            {
+                Name = "mm"
+            };
             return CreatedAtAction("CreateProduct", _productRepository.InsertProduct(product));
         }
 
         [HttpPut("[action]")]
-        public IActionResult UpdateProduct([FromBody]ProductDto product)
+        public IActionResult UpdateProduct([FromBody] ProductDto product)
         {
             return CreatedAtAction("UpdateProduct", _productRepository.UpdateProduct(product));
         }
 
         [HttpDelete("[action]")]
-        public IActionResult DeleteProduct([FromBody]ProductDto product)
+        public IActionResult DeleteProduct([FromBody] ProductDto product)
         {
             return Ok(_productRepository.DeleteProduct(product));
         }

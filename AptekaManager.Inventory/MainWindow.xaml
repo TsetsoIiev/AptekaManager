@@ -5,8 +5,40 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AptekaManager.Inventory"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="500" Width="800" ResizeMode="NoResize">
     <Grid>
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_Файл">
+                    <MenuItem Header="_Отваряне"/>
+                    <MenuItem Header="_Затваряне"/>
+                    <MenuItem Header="_Запазване"/>
+                </MenuItem>
+                <MenuItem Header="_Добавяне">
+                    <MenuItem x:Name="AddCSV" Header="_CSV данни" Click="AddCSV_Click"/>
+                    <MenuItem Header="_Excel данни"/>
+                </MenuItem>
+            </Menu>
+            <StackPanel></StackPanel>
+        </DockPanel>
+        
+        <Button x:Name="SearchBTN" Content="Търсене" HorizontalAlignment="Left" Margin="195,41,0,0" VerticalAlignment="Top" Width="103" Click="SearchBTN_Click"/>
+        <TextBox x:Name="SearchTB" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Width="180" TextChanged="SearchTB_TextChanged" Height="19" />
 
+        <DataGrid AutoGenerateColumns="False" 
+          Height="359" 
+          HorizontalAlignment="Center" 
+          Name="dataGrid1" 
+          VerticalAlignment="Top" 
+          Width="780" Margin="0,65,0,0" CanUserAddRows="False">
+            <DataGrid.Columns >
+                <DataGridTextColumn Header="Име" Binding="{Binding Path=Name}" MinWidth="50" />
+                <DataGridTextColumn Header="Цена" Binding="{Binding Path=Price}" MinWidth="50" />
+                <DataGridTextColumn Header="Количество" Binding="{Binding Path=Quantity}" MinWidth="50" />
+                <DataGridTextColumn Header="Дескрипшън" Binding="{Binding Path=Description}" MinWidth="50" />
+                <DataGridTextColumn Header="На кутия" Binding="{Binding Path=MeasurementUnitsPerBox}" MinWidth="50" />
+                <DataGridTextColumn Header="Делимо" Binding="{Binding Path=IsSeparableSale}" MinWidth="50" />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>

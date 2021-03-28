@@ -31,7 +31,14 @@ namespace AptekaManager.Internal.Repositories
         {
             var newProduct = MapToDomain(product);
             _context.Products.Add(newProduct);
-            _context.SaveChanges();
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (System.Exception)
+            {
+
+            }
             return product;
         }
 
