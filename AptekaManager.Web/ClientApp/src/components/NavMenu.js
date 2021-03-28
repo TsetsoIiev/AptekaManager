@@ -37,10 +37,10 @@ export function NavMenu() {
           <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={isCollapsed} navbar>
             <ul className="navbar-nav flex-grow">
               <NavItem>
-                <NavLink tag={Link} to="/" className={classes.txt}>Home</NavLink>
+                <NavLink tag={Link} to="/" className={classes.txt}>Търсене</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={Link} to="/contacts" className={classes.txt}>Contacts</NavLink>
+                <NavLink tag={Link} to="/contacts" className={classes.txt}>Контакти</NavLink>
               </NavItem>
             </ul>
           </Collapse>

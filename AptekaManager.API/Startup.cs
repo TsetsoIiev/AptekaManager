@@ -1,4 +1,3 @@
-using System.Reflection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -13,6 +12,8 @@ namespace AptekaManager.API
 {
     public class Startup
     {
+        private readonly string _policyName = "mente";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -37,6 +38,18 @@ namespace AptekaManager.API
                 .AddScoped<IMeasurementUnitRepository, MeasurementUnitRepository>()
                 .AddScoped<IProductRepository, ProductRepository>()
                 .AddScoped<IPharmacyRepository, PharmacyRepository>();
+
+            services.AddCors(opts =>
+            {
+                opts.AddPolicy(_policyName,
+                    builder =>
+                    {
+                        builder
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
+                    });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,6 +65,8 @@ namespace AptekaManager.API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(_policyName);
 
             app.UseAuthorization();
 

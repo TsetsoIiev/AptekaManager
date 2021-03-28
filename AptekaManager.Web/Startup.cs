@@ -9,6 +9,8 @@ namespace AptekaManager.Web
 {
     public class Startup
     {
+        private readonly string _origins = "Mente";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;

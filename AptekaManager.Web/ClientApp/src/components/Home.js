@@ -10,20 +10,29 @@ export function Home() {
   const [pharmacyData, setPharmacyData] = useState([]);
 
   const handleSearchClick = () => {
-    axios.get(`https://localhost:44306/api/Pharmacy/GetMedicines/${searchData}`, {
-      headers: {
-        'Access-Control-Allow-Origin': '*'
-      }
-    }).then((res) => {
-        console.log(res);
-        setPharmacyData(res.data);
+    try {
+      axios.get(`https://localhost:44306/api/Pharmacy/GetMedicines/${searchData}`, {
+        headers: {
+          'Access-Control-Allow-Origin': '*'
+        }
+      }).then((res) => {
+        if (res.status === 200) {
+          setPharmacyData(res.data);
+        }
       })
-  }
+    } catch {
+      alert('Търсеното лекарство не бе намерено в нашата мрежа');
+    }
+}
 
   return (
     <div>
-      <SearchBox searchData={searchData} setSearchData={setSearchData} handleSearchClick={handleSearchClick} />
-      <PharmacyGrid data={pharmacyData} />
+      <div>
+        <SearchBox searchData={searchData} setSearchData={setSearchData} handleSearchClick={handleSearchClick} />
+      </div>
+      <div>
+        <PharmacyGrid data={pharmacyData} />
+      </div>
     </div>
   );
 }

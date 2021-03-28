@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { fade, withStyles, makeStyles, createMuiTheme } from '@material-ui/core/styles';
 import { green } from '@material-ui/core/colors';
 import InputBase from '@material-ui/core/InputBase';
